@@ -37,11 +37,13 @@
   export default {
     data() {
       return {
-        multipleSelection: []
+       tableData: []
       }
     },
     created(){
       this.$http.get('/gm/api/tableData').then(response => {
+       let tableData = response.data;
+        console.log(tableData)
           console.log(response);// success callback
       }, response => {
           // error callback
