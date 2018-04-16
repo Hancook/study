@@ -40,14 +40,17 @@
        tableData: []
       }
     },
-    created(){
+    mounted(){
       this.$http.get('/gm/api/tableData').then(response => {
-       let tableData = response.data;
-        console.log(tableData)
+        
+       this.tableData = response.data;
           console.log(response);// success callback
       }, response => {
           // error callback
       })
+    },
+    created(){
+      
         // axios.get('/tableData')
         // .then(function(respone){
         //     console.log(response);
