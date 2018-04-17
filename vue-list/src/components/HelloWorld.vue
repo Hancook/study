@@ -4,7 +4,7 @@
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 100%"
+    style="width: 100%;text-align:center"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -13,7 +13,7 @@
     <el-table-column
       label="日期"
       width="120">
-      <template slot-scope="scope">{{ scope.row.date }}</template>
+      <template slot-scope="scope">{{ scope.row.data }}</template>
     </el-table-column>
     <el-table-column
       prop="name"
@@ -30,14 +30,17 @@
     <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
     <el-button @click="toggleSelection()">取消选择</el-button>
   </div>
+  <page></page>
 </div>
 </template>
 
 <script>
+  import page from "./_common/page"
   export default {
     data() {
       return {
-       tableData: []
+       tableData: [],
+        multipleSelection: []
       }
     },
     mounted(){
@@ -50,14 +53,6 @@
       })
     },
     created(){
-      
-        // axios.get('/tableData')
-        // .then(function(respone){
-        //     console.log(response);
-        // })
-        // .catch(function(error){
-        //     console.log(error);
-        // })
     },
 
     methods: {
@@ -73,8 +68,10 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
-    }
+    },
+       components: {page}
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
